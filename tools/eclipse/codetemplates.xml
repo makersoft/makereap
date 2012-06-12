@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+	<template autoinsert="false" context="newtype_context"
+		deleted="false" description="Newly created files" enabled="true"
+		id="org.eclipse.jdt.ui.text.codetemplates.newtype" name="newtype">/*
+		* @(#)${file_name} ${date} ${time}
+		*
+		* Copyright (c) 2011-${year} Makersoft.org all rights reserved.
+		*
+		* Licensed under the Apache License, Version 2.0 (the "License");
+		*
+		*/
+		${filecomment}
+		${package_declaration}
+
+		/**
+		* Class description goes here.
+		*
+		* @version ${date}
+		* @author ${user}
+		*/
+		${typecomment}
+		${type_declaration}
+	</template>
+</templates>
