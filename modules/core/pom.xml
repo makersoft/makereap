@@ -13,7 +13,7 @@
 	<packaging>jar</packaging>
 
 	<name>Makereap's Core Module</name>
-	<url>http://www.syspeak.com</url>
+	<url>http://www.makersoft.org</url>
 
 	<dependencies>
 		<dependency>
