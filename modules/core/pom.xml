@@ -3,13 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-		<groupId>org.makersoft</groupId>
+		<groupId>org.makersoft.eap</groupId>
 		<artifactId>makereap</artifactId>
 		<version>0.1-SNAPSHOT</version>
 		<relativePath>../../pom.xml</relativePath> 
 	</parent>
 	
-	<artifactId>maker-core</artifactId>
+	<artifactId>eap-core</artifactId>
 	<packaging>jar</packaging>
 
 	<name>Makereap's Core Module</name>

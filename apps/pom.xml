@@ -5,19 +5,21 @@
 	<modelVersion>4.0.0</modelVersion>
     
 	<parent>
-		<groupId>org.makersoft</groupId>
+		<groupId>org.makersoft.eap</groupId>
 		<artifactId>makereap</artifactId>
 		<version>0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
     
-	<artifactId>maker-apps</artifactId>
+	<artifactId>eap-apps</artifactId>
 	<packaging>pom</packaging>
 	
 	<name>apps</name>
     
 	<modules>
+	<!-- 
 		<module>designer</module>
+		 -->
 	</modules>
 	
 </project>

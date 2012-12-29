@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>org.makersoft</groupId>
+	<groupId>org.makersoft.eap</groupId>
 	<artifactId>makereap</artifactId>
 	<packaging>pom</packaging>
 	<version>0.1-SNAPSHOT</version>
@@ -27,7 +27,7 @@
     </licenses>
 
     <organization>
-        <name>Makersoft Software Foundation</name>
+        <name>Makersoft</name>
         <url>http://www.makereap.org</url>
     </organization>
     
@@ -46,7 +46,7 @@
 		      </roles>
 	      	<timezone>+8</timezone>
 	      	<properties>
-	        	<picUrl>http://www.makersoft.com/fengkuok</picUrl>
+	        	<picUrl>http://developer.makersoft.com/fengkuok</picUrl>
 	      	</properties>
 	    </developer>
   	</developers>
@@ -119,11 +119,11 @@
   	</mailingLists>
 	 -->
 	<repositories>
-		<repository>
-			<id>nexus</id>
-			<name>Team Nexus Repository</name>
-			<url>http://localhost:8081/nexus/content/groups/public</url>
-		</repository>
+<!-- 		<repository> -->
+<!-- 			<id>nexus</id> -->
+<!-- 			<name>Team Nexus Repository</name> -->
+<!-- 			<url>http://localhost:8081/nexus/content/groups/public</url> -->
+<!-- 		</repository> -->
 		
 		<repository>
 			<id>central</id>
@@ -163,6 +163,13 @@
         	<name>SpringSource Milestones Proxy</name>
         	<url>https://oss.sonatype.org/content/repositories/springsource-milestones</url>
       	</repository>
+      	
+      	<repository>
+        	<id>springsource-snapshot</id>
+        	<name>SpringSource Snapshot Proxy</name>
+        	<url>http://repo.springsource.org/libs-snapshot</url>
+      	</repository>
+      	
 		
 		<repository>
     		<id>codehaus-snapshots</id>
@@ -192,35 +199,34 @@
 	
 	<properties>
 		<!-- 主要依赖库的版本定义 -->
-		<springside.version>4.0.0.RC4-SNAPSHOT</springside.version>
-		<spring.version>3.1.1.RELEASE</spring.version>
-		<hibernate.version>4.1.3.Final</hibernate.version>
+		<spring.version>3.2.0.RELEASE</spring.version>
+		<hibernate.version>4.1.9.Final</hibernate.version>
 		<mybatis.version>3.1.1</mybatis.version>
 		<spring-data-jpa.version>1.1.0.RELEASE</spring-data-jpa.version>
-		<cxf.version>2.6.0</cxf.version>
+		<cxf.version>2.7.1</cxf.version>
 		<jersey.version>1.12</jersey.version>
 		<shiro.version>1.2.0</shiro.version>
-		<activemq.version>5.5.1</activemq.version>
+		<activemq.version>5.7.0</activemq.version>
 		<quartz.version>2.1.5</quartz.version>
 		<ehcache.version>2.5.2</ehcache.version>
-		<hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
-		<jackson.version>2.0.2</jackson.version>
+		<hibernate-validator.version>4.3.1.Final</hibernate-validator.version>
+		<jackson.version>2.1.2</jackson.version>
 		<spymemcached.version>2.8.1</spymemcached.version>
 		<jolokia.version>1.0.3</jolokia.version>
-		<guava.version>12.0</guava.version>
+		<guava.version>13.0.1</guava.version>
 		<commons-lang3.version>3.1</commons-lang3.version>
 		<commons-io.version>2.3</commons-io.version>
 		<joda-time.version>2.1</joda-time.version>
-		<dozer.version>5.3.2</dozer.version>
+		<dozer.version>5.4.0</dozer.version>
 		<freemarker.version>2.3.19</freemarker.version>
 		<poi.version>3.8</poi.version>
-		<slf4j.version>1.6.4</slf4j.version>
+		<slf4j.version>1.7.2</slf4j.version>
 		<jetty.version>7.6.3.v20120416</jetty.version>
 		<h2.version>1.3.166</h2.version>
-		<junit.version>4.10</junit.version>
-		<mockito.version>1.9.0</mockito.version>
-		<powermock.version>1.4.12</powermock.version>
-		<selenium.version>2.21.0</selenium.version>
+		<junit.version>4.11</junit.version>
+		<mockito.version>1.9.5</mockito.version>
+		<powermock.version>1.5</powermock.version>
+		<selenium.version>2.28.0</selenium.version>
 		<jbpm4.version>4.4</jbpm4.version>
 		<activiti.version>5.9</activiti.version>
 		<struts2.version>2.3.4</struts2.version>
@@ -234,24 +240,24 @@
 	<!-- 预定义依赖项的version,scope与exclusions,子项目中只需定义groupId 和 artifactId 即可 -->
 	<dependencyManagement>
 		<dependencies>
-			<!-- SPRINGSIDE MODULES begin 
+			<!-- Makersoft modules begin 
 			<dependency>
-				<groupId>org.springside</groupId>
-				<artifactId>springside-core</artifactId>
-				<version>${springside.version}</version>
+				<groupId>org.makersoft</groupId>
+				<artifactId>maker-core</artifactId>
+				<version>${makereap.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.springside</groupId>
-				<artifactId>springside-extension</artifactId>
-				<version>${springside.version}</version>
+				<groupId>org.makersoft</groupId>
+				<artifactId>maker-extension</artifactId>
+				<version>${makereap.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springside</groupId>
 				<artifactId>springside-test</artifactId>
-				<version>${springside.version}</version>
+				<version>${makereap.version}</version>
 				<scope>test</scope>
 			</dependency>-->
-			<!-- SPRINGSIDE MODULES end -->
+			<!-- Makersoft modules end -->
 
 			<!-- SPRING begin -->
 			<!-- spring basic -->
