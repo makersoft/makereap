@@ -4,12 +4,12 @@
 	
 	<parent>
 		<groupId>org.makersoft.eap</groupId>
-		<artifactId>makereap</artifactId>
+		<artifactId>eap-modules</artifactId>
 		<version>0.1-SNAPSHOT</version>
-		<relativePath>../../pom.xml</relativePath> 
+		<relativePath>../pom.xml</relativePath> 
 	</parent>
 	
-	<artifactId>eap-core</artifactId>
+	<artifactId>eap-modules-core</artifactId>
 	<packaging>jar</packaging>
 
 	<name>Makereap's Core Module</name>
