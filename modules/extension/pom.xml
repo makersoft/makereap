@@ -9,7 +9,7 @@
   </parent>
   
   <artifactId>eap-modules-extension</artifactId>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
 
   <name>eap-modules-extension Maven Webapp</name>
   <url>http://maven.apache.org</url>
