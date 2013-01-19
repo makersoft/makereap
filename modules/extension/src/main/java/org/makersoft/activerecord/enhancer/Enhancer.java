@@ -1,5 +1,5 @@
 /*
- * @(#)AbstractEnhancer.java 2013-1-19 下午12:44:39
+ * @(#)Enhancer.java 2013-1-19 下午12:44:39
  *
  * Copyright (c) 2011-2013 Makersoft.org all rights reserved.
  *
@@ -37,20 +37,20 @@ import org.slf4j.LoggerFactory;
  * @version 2013-1-19 下午12:44:39
  * @author Feng Kuok
  */
-public abstract class AbstractEnhancer {
+public abstract class Enhancer {
 
-	private static final Logger logger = LoggerFactory.getLogger(AbstractEnhancer.class);
+	private static final Logger logger = LoggerFactory.getLogger(Enhancer.class);
 
 	protected ClassPool classPool;
 
-	public AbstractEnhancer() {
+	public Enhancer() {
 		this.classPool = newClassPool();
 	}
 
 	public static ClassPool newClassPool() {
 		ClassPool classPool = new ClassPool();
 		classPool.appendSystemPath();
-		classPool.appendClassPath(new LoaderClassPath(AbstractEnhancer.class.getClassLoader()));
+		classPool.appendClassPath(new LoaderClassPath(Enhancer.class.getClassLoader()));
 		classPool.appendClassPath(new ApplicationClassesClasspath());
 		return classPool;
 	}
