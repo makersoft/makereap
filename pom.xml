@@ -958,6 +958,13 @@
 				<artifactId>icu4j</artifactId>
 				<version>4.8.1.1</version>
 			</dependency>
+			
+			<!-- enhancer -->
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>3.16.1-GA</version>
+			</dependency>
 			<!-- OTHER UTILS end -->
 
 			<!-- TEST begin -->
