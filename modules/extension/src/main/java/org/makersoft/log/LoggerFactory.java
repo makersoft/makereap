@@ -11,6 +11,8 @@ package org.makersoft.log;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+import org.makersoft.log.sl4j.Sl4jLoggerFactory;
+
 /**
  * Creates loggers.  Static accessor will lazily try to decide on the best factory if none specified.
  */
@@ -54,7 +56,7 @@ public abstract class LoggerFactory {
 //                    factory = new CommonsLoggerFactory();
                 	
                 	Class.forName("org.slf4j.LoggerFactory");
-//                	factory = new Sl4jLoggerFactory();
+                	factory = new Sl4jLoggerFactory();
                 } catch (ClassNotFoundException ex) {
                     // commons logging not found, falling back to jdk logging
                 }

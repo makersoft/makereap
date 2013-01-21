@@ -8,12 +8,24 @@
  */
 package org.makersoft.log.annotation;
 
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
 /**
- * Class description goes here.
+ * Logger inject annotation.
  * 
- * @version 2013-1-21 下午3:06:24
- * @author Feng Kuok
+ * 默认Logger名称采用类全称.
  */
+@Target(FIELD)
+@Retention(RUNTIME)
 public @interface Logger {
 
+	/**
+	 * 指定logger name
+	 */
+	String name() default "";
+	
 }
