@@ -965,6 +965,13 @@
 				<artifactId>javassist</artifactId>
 				<version>3.16.1-GA</version>
 			</dependency>
+			
+			<!-- yaml -->
+			<dependency>
+			    <groupId>org.yaml</groupId>
+			    <artifactId>snakeyaml</artifactId>
+			    <version>1.11</version>
+			</dependency>
 			<!-- OTHER UTILS end -->
 
 			<!-- TEST begin -->
