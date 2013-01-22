@@ -161,7 +161,7 @@
 	   	<repository>
         	<id>springsource-milestones</id>
         	<name>SpringSource Milestones Proxy</name>
-        	<url>https://oss.sonatype.org/content/repositories/springsource-milestones</url>
+        	<url>http://repo.springsource.org/libs-milestone</url>
       	</repository>
       	
       	<repository>
@@ -191,6 +191,7 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+	
 	<!---->
 	<modules>
 		<module>modules</module>
@@ -1015,7 +1016,7 @@
 				<version>${spring.version}</version>
 				<scope>test</scope>
 			</dependency>
-
+			
 			<!-- jetty -->
 			<dependency>
 				<groupId>org.eclipse.jetty.aggregate</groupId>

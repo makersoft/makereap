@@ -16,25 +16,6 @@
 	<url>http://www.makersoft.org</url>
 
 	<dependencies>
-		<dependency>
-	  		<groupId>org.springframework</groupId>
-	  		<artifactId>spring-test-mvc</artifactId>
-	  		<version>1.0.0.BUILD-SNAPSHOT</version>
-		</dependency>
-		
-		<dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>1.2.1</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>xmlunit</groupId>
-            <artifactId>xmlunit</artifactId>
-            <version>1.2</version>
-            <optional>true</optional>
-        </dependency>
-        
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
@@ -50,17 +31,17 @@
        	</dependency>
        	
        	<!-- j2ee web spec -->
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>servlet-api</artifactId>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>jstl</artifactId>
-				<scope>provided</scope>
-			</dependency>
-			<!-- WEB end -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- WEB end -->
 		
 		<!-- spring -->
 		<dependency>
