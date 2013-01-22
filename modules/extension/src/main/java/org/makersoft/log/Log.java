@@ -15,27 +15,27 @@ package org.makersoft.log;
  * @author Feng Kuok
  */
 public interface Log {
-	void trace(String format, Object... args);
+	void trace(String msg, Object... args);
     void trace(String msg, Throwable ex, Object... args);
     boolean isTraceEnabled();
     
-    void debug(String format, Object... args);
+    void debug(String msg, Object... args);
     void debug(String msg, Throwable ex, Object... args);
     boolean isDebugEnabled();
     
-    void info(String format, Object... args);
+    void info(String msg, Object... args);
     void info(String msg, Throwable ex, Object... args);
     boolean isInfoEnabled();
     
-    void warn(String format, Object... args);
+    void warn(String msg, Object... args);
     void warn(String msg, Throwable ex, Object... args);
     boolean isWarnEnabled();
     
-    void error(String format, Object... args);
+    void error(String msg, Object... args);
     void error(String msg, Throwable ex, Object... args);
     boolean isErrorEnabled();
     
-    void fatal(String format, Object... args);
+    void fatal(String msg, Object... args);
     void fatal(String msg, Throwable ex, Object... args);
     boolean isFatalEnabled();
 }

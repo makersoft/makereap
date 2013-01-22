@@ -9,13 +9,11 @@
 package org.makersoft.log.sl4j;
 
 import org.makersoft.log.Log;
+import org.makersoft.log.LoggerUtils;
 import org.slf4j.Logger;
 
 /**
- * Class description goes here.
- * 
- * @version 2013-1-21 下午3:29:15
- * @author Feng Kuok
+ * sl4j implimentation.
  */
 public class Sl4jLogger implements Log{
 
@@ -26,14 +24,14 @@ public class Sl4jLogger implements Log{
 	}
 
 	@Override
-	public void trace(String format, Object... args) {
-		logger.trace(format, args);
+	public void trace(String msg, Object... args) {
+		logger.trace(LoggerUtils.format(msg, args));
 		
 	}
 
 	@Override
 	public void trace(String msg, Throwable ex, Object... args) {
-		logger.trace(msg, ex);
+		logger.trace(LoggerUtils.format(msg, args), ex);
 		
 	}
 
@@ -43,93 +41,88 @@ public class Sl4jLogger implements Log{
 	}
 
 	@Override
-	public void debug(String format, Object... args) {
-		// TODO Auto-generated method stub
+	public void debug(String msg, Object... args) {
+		logger.debug(LoggerUtils.format(msg, args));
 		
 	}
 
 	@Override
 	public void debug(String msg, Throwable ex, Object... args) {
-		// TODO Auto-generated method stub
+		logger.debug(LoggerUtils.format(msg, args), ex);
 		
 	}
 
 	@Override
 	public boolean isDebugEnabled() {
-		// TODO Auto-generated method stub
-		return false;
+		return logger.isDebugEnabled();
 	}
 
 	@Override
-	public void info(String format, Object... args) {
-		// TODO Auto-generated method stub
+	public void info(String msg, Object... args) {
+		logger.info(LoggerUtils.format(msg, args));
 		
 	}
 
 	@Override
 	public void info(String msg, Throwable ex, Object... args) {
-		// TODO Auto-generated method stub
+		logger.info(LoggerUtils.format(msg, args), ex);
 		
 	}
 
 	@Override
 	public boolean isInfoEnabled() {
-		// TODO Auto-generated method stub
-		return false;
+		return logger.isInfoEnabled();
 	}
 
 	@Override
-	public void warn(String format, Object... args) {
-		// TODO Auto-generated method stub
+	public void warn(String msg, Object... args) {
+		logger.warn(LoggerUtils.format(msg, args));
 		
 	}
 
 	@Override
 	public void warn(String msg, Throwable ex, Object... args) {
-		// TODO Auto-generated method stub
+		logger.warn(LoggerUtils.format(msg, args), ex);
 		
 	}
 
 	@Override
 	public boolean isWarnEnabled() {
-		// TODO Auto-generated method stub
-		return false;
+		return logger.isWarnEnabled();
 	}
 
 	@Override
-	public void error(String format, Object... args) {
-		// TODO Auto-generated method stub
+	public void error(String msg, Object... args) {
+		logger.error(LoggerUtils.format(msg, args));
 		
 	}
 
 	@Override
 	public void error(String msg, Throwable ex, Object... args) {
-		// TODO Auto-generated method stub
+		logger.error(LoggerUtils.format(msg, args), ex);
 		
 	}
 
 	@Override
 	public boolean isErrorEnabled() {
-		// TODO Auto-generated method stub
-		return false;
+		return logger.isWarnEnabled();
 	}
 
 	@Override
-	public void fatal(String format, Object... args) {
-		// TODO Auto-generated method stub
+	public void fatal(String msg, Object... args) {
+		logger.error(LoggerUtils.format(msg, args));
 		
 	}
 
 	@Override
 	public void fatal(String msg, Throwable ex, Object... args) {
-		// TODO Auto-generated method stub
+		logger.error(LoggerUtils.format(msg, args), ex);
 		
 	}
 
 	@Override
 	public boolean isFatalEnabled() {
-		// TODO Auto-generated method stub
-		return false;
+		return logger.isErrorEnabled();
 	}
 
 }
