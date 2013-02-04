@@ -1017,6 +1017,14 @@
 				<scope>test</scope>
 			</dependency>
 			
+			<!-- spring mvc单元测试解析json工具类 -->
+			<dependency>
+            	<groupId>com.jayway.jsonpath</groupId>
+	            <artifactId>json-path</artifactId>
+	            <version>0.8.1</version>
+	            <scope>test</scope>
+	        </dependency>
+			
 			<!-- jetty -->
 			<dependency>
 				<groupId>org.eclipse.jetty.aggregate</groupId>
