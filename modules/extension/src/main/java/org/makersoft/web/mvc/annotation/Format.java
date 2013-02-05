@@ -27,7 +27,19 @@ public @interface Format {
 	
 	Render[] render() default Render.JSON;
 	
+	/**
+	 * 序列化包含属性
+	 */
 	String[] includes() default "";
 	
+	/**
+	 * 序列化排除属性
+	 */
 	String[] excludes() default "";
+	
+	/**
+	 * 是否排除父类中的属性
+	 * @return default false
+	 */
+	boolean ignoreHierarchy() default false;
 }
