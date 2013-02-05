@@ -218,8 +218,13 @@ public class JSONUtil {
             response.sendError(serializationParams.getErrorCode());
 
         // content type
-        response.setContentType(serializationParams.getContentType() + ";charset="
-                + serializationParams.getEncoding());
+//        response.setContentType(serializationParams.getContentType() + ";charset="
+//                + serializationParams.getEncoding());
+        
+        // character encoding  
+        response.setCharacterEncoding(serializationParams.getEncoding());
+        // content type
+        response.setContentType(serializationParams.getContentType());
 
         if (serializationParams.isNoCache()) {
             response.setHeader("Cache-Control", "no-cache");
