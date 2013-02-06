@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.makersoft.web.mvc.annotation.Format;
 import org.makersoft.web.mvc.json.JSONResult;
+import org.makersoft.web.mvc.json.JSONWriter;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.server.ServletServerHttpRequest;
@@ -34,6 +35,28 @@ import org.springframework.web.method.support.ModelAndViewContainer;
  * @author Feng Kuok
  */
 public class FormatHandlerMethodReturnValueHandler implements HandlerMethodReturnValueHandler{
+	
+	private String encoding = "UTF-8";
+    private boolean wrapWithComments = false;
+    private boolean prefix = false;
+    private boolean enableGZIP = false;
+    
+//    /*
+//     * whether to ignore properties defined on base classes of the root object 
+//     */
+//    private boolean ignoreHierarchy = true;
+    
+    private boolean enumAsBean = JSONWriter.ENUM_AS_BEAN_DEFAULT;
+    
+    private boolean noCache = false;
+    
+    private boolean excludeNullProperties = false;
+    
+    private String callbackParameter;
+    
+    private String wrapPrefix;
+    
+    private String wrapSuffix;
 
 	@Override
 	public boolean supportsReturnType(MethodParameter returnType) {
@@ -62,6 +85,25 @@ public class FormatHandlerMethodReturnValueHandler implements HandlerMethodRetur
 			result.setExcludeProperties(StringUtils.join(format.excludes(), ","));
 		}
 		
+		if(format.includes().length > 0){
+			result.setIncludeProperties(StringUtils.join(format.includes(), ","));
+		}
+		
+		// default false
+		result.setIgnoreHierarchy(format.ignoreHierarchy());
+		
+		//settings 
+		result.setEncoding(encoding);
+		result.setWrapWithComments(wrapWithComments);
+		result.setPrefix(prefix);
+		result.setEnableGZIP(enableGZIP);
+		result.setEnumAsBean(enumAsBean);
+		result.setNoCache(noCache);
+		result.setExcludeNullProperties(excludeNullProperties);
+		result.setCallbackParameter(callbackParameter);
+		result.setWrapPrefix(wrapPrefix);
+		result.setWrapSuffix(wrapSuffix);
+		
 		try {
 			result.execute(inputMessage.getServletRequest(), outputMessage.getServletResponse(), returnValue);
 		} catch (Exception e) {
@@ -85,4 +127,49 @@ public class FormatHandlerMethodReturnValueHandler implements HandlerMethodRetur
 		return new ServletServerHttpRequest(servletRequest);
 	}
 
+	//setter methods
+	public void setEncoding(String encoding) {
+		this.encoding = encoding;
+	}
+
+	public void setWrapWithComments(boolean wrapWithComments) {
+		this.wrapWithComments = wrapWithComments;
+	}
+
+	public void setPrefix(boolean prefix) {
+		this.prefix = prefix;
+	}
+
+	public void setEnableGZIP(boolean enableGZIP) {
+		this.enableGZIP = enableGZIP;
+	}
+
+//	public void setIgnoreHierarchy(boolean ignoreHierarchy) {
+//		this.ignoreHierarchy = ignoreHierarchy;
+//	}
+
+	public void setEnumAsBean(boolean enumAsBean) {
+		this.enumAsBean = enumAsBean;
+	}
+
+	public void setNoCache(boolean noCache) {
+		this.noCache = noCache;
+	}
+
+	public void setExcludeNullProperties(boolean excludeNullProperties) {
+		this.excludeNullProperties = excludeNullProperties;
+	}
+
+	public void setCallbackParameter(String callbackParameter) {
+		this.callbackParameter = callbackParameter;
+	}
+
+	public void setWrapPrefix(String wrapPrefix) {
+		this.wrapPrefix = wrapPrefix;
+	}
+
+	public void setWrapSuffix(String wrapSuffix) {
+		this.wrapSuffix = wrapSuffix;
+	}
+	
 }
