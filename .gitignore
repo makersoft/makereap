@@ -1,6 +1,7 @@
 .classpath
 .project
 .settings/
+.idea/
 target/
 logs/
 eclipse-local.bat
@@ -9,3 +10,4 @@ org.eclipse.wst.common.component
 org.eclipse.wst.common.project.facet.core.xml
 /TODO.txt
 /.DS_Store
+/makereap.iml
