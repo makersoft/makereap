@@ -161,7 +161,7 @@
 	   	<repository>
         	<id>springsource-milestones</id>
         	<name>SpringSource Milestones Proxy</name>
-        	<url>https://oss.sonatype.org/content/repositories/springsource-milestones</url>
+        	<url>http://repo.springsource.org/libs-milestone</url>
       	</repository>
       	
       	<repository>
@@ -191,6 +191,7 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+	
 	<!---->
 	<modules>
 		<module>modules</module>
@@ -218,9 +219,11 @@
 		<commons-io.version>2.3</commons-io.version>
 		<joda-time.version>2.1</joda-time.version>
 		<dozer.version>5.4.0</dozer.version>
+		<httpclient.version>4.2.2</httpclient.version>
 		<freemarker.version>2.3.19</freemarker.version>
 		<poi.version>3.8</poi.version>
 		<slf4j.version>1.7.2</slf4j.version>
+		<logback.version>1.0.9</logback.version>
 		<jetty.version>7.6.3.v20120416</jetty.version>
 		<h2.version>1.3.166</h2.version>
 		<junit.version>4.11</junit.version>
@@ -282,6 +285,20 @@
 				<artifactId>spring-context</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			
+			<!-- spring tx -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			
+			<!-- email/scheduler/freemarker -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context-support</artifactId>
@@ -294,28 +311,23 @@
             	<artifactId>spring-oxm</artifactId>  
             	<version>${spring.version}</version>  
         	</dependency>
+        	<!-- SPRING end -->
 
-			<!-- spring tx -->
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
+			<!-- AOP begin-->
 			<dependency>
 				<groupId>org.aspectj</groupId>
 				<artifactId>aspectjrt</artifactId>
-				<version>1.6.9</version>
+				<version>1.7.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.aspectj</groupId>
 				<artifactId>aspectjweaver</artifactId>
-				<version>1.6.9</version>
+				<version>1.7.1</version>
+				<scope>runtime</scope>
 			</dependency>
+			<!-- AOP end -->
+			
+			<!-- option? -->
 			<dependency>
 				<groupId>cglib</groupId>
 				<artifactId>cglib</artifactId>
@@ -331,7 +343,6 @@
 				<artifactId>asm</artifactId>
 				<version>3.3.1</version>
 			</dependency>
-			<!-- SPRING end -->
 
 			<!-- PERSISTENCE begin -->
 			<!-- hibernate -->
@@ -361,6 +372,12 @@
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-jpa</artifactId>
 				<version>${spring-data-jpa.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>junit</groupId>
+						<artifactId>junit-dep</artifactId>
+					</exclusion>
+				</exclusions>
         	</dependency>
 
 			<!-- mybatis -->
@@ -392,11 +409,7 @@
 				<groupId>commons-dbcp</groupId>
 				<artifactId>commons-dbcp</artifactId>
 				<version>1.4</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-pool</groupId>
-				<artifactId>commons-pool</artifactId>
-				<version>1.6</version>
+				<scope>runtime</scope>
 			</dependency>
 			<!-- PERSISTENCE end -->
 
@@ -445,6 +458,7 @@
 				<groupId>opensymphony</groupId>
 				<artifactId>sitemesh</artifactId>
 				<version>2.4.2</version>
+				<scope>runtime</scope>
 			</dependency>
 
 			<!-- j2ee web spec -->
@@ -556,47 +570,18 @@
 			</dependency>
 			<!-- SOAP end -->
 
-			<!-- REST begin -->
+			<!-- JAX-RS begin -->
 			<dependency>
-				<groupId>com.sun.jersey</groupId>
-				<artifactId>jersey-server</artifactId>
-				<version>${jersey.version}</version>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+				<version>${cxf.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.sun.jersey</groupId>
-				<artifactId>jersey-servlet</artifactId>
-				<version>${jersey.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.sun.jersey</groupId>
-				<artifactId>jersey-client</artifactId>
-				<version>${jersey.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.sun.jersey.contribs</groupId>
-				<artifactId>jersey-spring</artifactId>
-				<version>${jersey.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>org.springframework</groupId>
-						<artifactId>spring</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>com.sun.jersey</groupId>
-						<artifactId>jersey-grizzly2</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>com.sun.jersey</groupId>
-						<artifactId>jersey-servlet</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>com.sun.jersey.contribs</groupId>
-				<artifactId>jersey-multipart</artifactId>
-				<version>${jersey.version}</version>
-			</dependency>
-			<!-- REST end -->
+	            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+	            <artifactId>jackson-jaxrs-json-provider</artifactId>
+	            <version>${jackson.version}</version>
+        	</dependency>
+			<!-- JAX-RS end -->
 
 			<!-- SECURITY begin -->
 			<dependency>
@@ -665,13 +650,6 @@
 				<version>${spymemcached.version}</version>
 			</dependency>
 
-			<dependency>
-				<groupId>com.thimbleware.jmemcached</groupId>
-				<artifactId>jmemcached-core</artifactId>
-				<version>1.0.0</version>
-				<scope>test</scope>
-			</dependency>
-
 			<!-- ehcache -->
 			<dependency>
 				<groupId>net.sf.ehcache</groupId>
@@ -687,6 +665,57 @@
 				<version>${jolokia.version}</version>
 			</dependency>
 			<!-- jolokia end-->
+	
+			<!-- validator -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${hibernate-validator.version}</version>
+			</dependency>
+			
+			<!-- JSON begin -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.module</groupId>
+				<artifactId>jackson-module-jaxb-annotations</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.datatype</groupId>
+  				<artifactId>jackson-datatype-hibernate4</artifactId>
+  				<version>${jackson.version}</version>
+			</dependency>
+			<!-- JSON end -->
+			
+			<!-- XML begin -->
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>1.6.1</version>
+				<exclusions>
+					<exclusion>
+						<groupId>xml-apis</groupId>
+						<artifactId>xml-apis</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- 重新定义Java XPath Engine, exclude不必要的依赖 -->
+			<dependency>
+				<groupId>jaxen</groupId>
+				<artifactId>jaxen</artifactId>
+				<version>1.1.4</version>
+			</dependency>
+			<!-- XML end -->
 
 			<!-- LOGGING begin -->
 			<!-- slf4j -->
@@ -695,6 +724,13 @@
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
+			
+			<!-- logback -->
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
 
 			<!-- slf4j-log4j绑定 -->
 			<dependency>
@@ -702,12 +738,21 @@
 				<artifactId>slf4j-log4j12</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
+			
+			<!-- log4j 实际调用slf4j -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>log4j-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
 
-			<!-- common-logging 實際調用 slf4j -->
+			<!-- common-logging 实际调用slf4j -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>jcl-over-slf4j</artifactId>
 				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
 			</dependency>
 			
 			<!-- slf4j没有log4j的情形 -->
@@ -732,125 +777,7 @@
 			</dependency>
 			<!-- LOGGING end -->
 
-			<!-- XML begin -->
-			<dependency>
-				<groupId>dom4j</groupId>
-				<artifactId>dom4j</artifactId>
-				<version>1.6.1</version>
-				<exclusions>
-					<exclusion>
-						<groupId>xml-apis</groupId>
-						<artifactId>xml-apis</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-
-			<!-- 重新定义Java XPath Engine, exclude不必要的依赖 -->
-			<dependency>
-				<groupId>jaxen</groupId>
-				<artifactId>jaxen</artifactId>
-				<version>1.1.3</version>
-				<exclusions>
-					<exclusion>
-						<groupId>xerces</groupId>
-						<artifactId>xercesImpl</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>xml-apis</groupId>
-						<artifactId>xml-apis</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>dom4j</groupId>
-						<artifactId>dom4j</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>jdom</groupId>
-						<artifactId>jdom</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>xom</groupId>
-						<artifactId>xom</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>maven-plugins</groupId>
-						<artifactId>maven-cobertura-plugin</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>maven-plugins</groupId>
-						<artifactId>maven-findbugs-plugin</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-
-			<!-- jaxb -->
-			<dependency>
-				<groupId>javax.xml.bind</groupId>
-				<artifactId>jaxb-api</artifactId>
-				<version>2.2.5</version>
-			</dependency>
-			<dependency>
-				<groupId>com.sun.xml.bind</groupId>
-				<artifactId>jaxb-impl</artifactId>
-				<version>2.2.5</version>
-			</dependency>
-			
-			<dependency>
-            	<groupId>com.thoughtworks.xstream</groupId>
-            	<artifactId>xstream</artifactId>
-            	<version>1.4.2</version>
-        	</dependency>
-			<!-- XML end -->
-
-			<!-- JSON begin -->
-			<dependency>
-				<groupId>org.codehaus.jackson</groupId>
-				<artifactId>jackson-core-asl</artifactId>
-				<version>${jackson1x.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.jackson</groupId>
-				<artifactId>jackson-mapper-asl</artifactId>
-				<version>${jackson1x.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.jackson</groupId>
-				<artifactId>jackson-jaxrs</artifactId>
-				<version>${jackson1x.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.jackson</groupId>
-				<artifactId>jackson-xc</artifactId>
-				<version>${jackson1x.version}</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.module</groupId>
-				<artifactId>jackson-module-jaxb-annotations</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.jaxrs</groupId>
-				<artifactId>jackson-jaxrs-json-provider</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.datatype</groupId>
-  				<artifactId>jackson-datatype-hibernate4</artifactId>
-  				<version>${jackson.version}</version>
-			</dependency>
-			<!-- JSON end -->
-
 			<!-- GENERAL UTILS begin -->
-			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>2.6</version>
-			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
@@ -867,6 +794,11 @@
 				<version>3.2.1</version>
 			</dependency>
 			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>1.7</version>
+			</dependency>
+			<dependency>
 				<groupId>commons-beanutils</groupId>
 				<artifactId>commons-beanutils</artifactId>
 				<version>1.8.3</version>
@@ -876,11 +808,6 @@
 						<artifactId>commons-logging</artifactId>
 					</exclusion>
 				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>commons-codec</groupId>
-				<artifactId>commons-codec</artifactId>
-				<version>1.6</version>
 			</dependency>
 
 			<!-- google java library -->
@@ -896,6 +823,23 @@
 				<artifactId>joda-time</artifactId>
 				<version>${joda-time.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time-jsptags</artifactId>
+				<version>1.1.1</version>
+			</dependency>
+			<!-- joda for hibernate -->
+			<dependency>
+				<groupId>org.jadira.usertype</groupId>
+				<artifactId>usertype.core</artifactId>
+				<version>3.0.0.GA</version>
+			</dependency>
+			<!-- joda for jackson -->
+			<dependency>
+	            <groupId>com.fasterxml.jackson.datatype</groupId>
+	            <artifactId>jackson-datatype-joda</artifactId>
+	            <version>${jackson.version}</version>
+        	</dependency>
 			<!-- GENERAL UTILS end -->
 
 			<!-- OTHER UTILS begin -->
@@ -913,18 +857,17 @@
 				<version>${poi.version}</version>
 			</dependency>
 
-			<!-- validator -->
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-validator</artifactId>
-				<version>${hibernate-validator.version}</version>
-			</dependency>
-
 			<!-- httpclient -->
 			<dependency>
 				<groupId>org.apache.httpcomponents</groupId>
 				<artifactId>httpclient</artifactId>
-				<version>4.2-beta1</version>
+				<version>${httpclient.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 
 			<!-- template engine -->
@@ -952,18 +895,18 @@
 				<version>1.1.1</version>
 			</dependency>
 
-			<!-- international component for Unicode -->
-			<dependency>
-				<groupId>com.ibm.icu</groupId>
-				<artifactId>icu4j</artifactId>
-				<version>4.8.1.1</version>
-			</dependency>
-			
 			<!-- enhancer -->
 			<dependency>
 				<groupId>org.javassist</groupId>
 				<artifactId>javassist</artifactId>
 				<version>3.16.1-GA</version>
+			</dependency>
+			
+			<!-- yaml -->
+			<dependency>
+			    <groupId>org.yaml</groupId>
+			    <artifactId>snakeyaml</artifactId>
+			    <version>1.11</version>
 			</dependency>
 			<!-- OTHER UTILS end -->
 
@@ -1008,22 +951,16 @@
 				<version>${spring.version}</version>
 				<scope>test</scope>
 			</dependency>
-
-			<!-- jetty -->
+			
+			<!-- spring mvc单元测试解析json工具类 -->
 			<dependency>
-				<groupId>org.eclipse.jetty.aggregate</groupId>
-				<artifactId>jetty-webapp</artifactId>
-				<version>${jetty.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-jsp</artifactId>
-				<version>${jetty.version}</version>
-				<scope>test</scope>
-			</dependency>
-
-			<!-- selenium 2.0 -->
+            	<groupId>com.jayway.jsonpath</groupId>
+	            <artifactId>json-path</artifactId>
+	            <version>0.8.1</version>
+	            <scope>test</scope>
+	        </dependency>
+	        
+	        <!-- selenium 2.0 -->
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-java</artifactId>
@@ -1052,21 +989,38 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-
+			
+			<!-- jetty -->
 			<dependency>
-				<groupId>org.dbunit</groupId>
-				<artifactId>dbunit</artifactId>
-				<version>2.4.8</version>
+				<groupId>org.eclipse.jetty.aggregate</groupId>
+				<artifactId>jetty-webapp</artifactId>
+				<version>${jetty.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-jsp</artifactId>
+				<version>${jetty.version}</version>
 				<scope>test</scope>
 			</dependency>
 
+			<!-- h2 -->
 			<dependency>
 				<groupId>com.h2database</groupId>
 				<artifactId>h2</artifactId>
 				<version>${h2.version}</version>
 				<scope>test</scope>
 			</dependency>
+			
+			<!-- memcached simulator -->
+			<dependency>
+				<groupId>com.thimbleware.jmemcached</groupId>
+				<artifactId>jmemcached-core</artifactId>
+				<version>1.0.0</version>
+				<scope>test</scope>
+			</dependency>
 
+			<!-- smtp server simulator -->
 			<dependency>
 				<groupId>com.icegreen</groupId>
 				<artifactId>greenmail</artifactId>
@@ -1220,6 +1174,15 @@
 					<configuration>
 						<downloadSources>true</downloadSources>
 						<downloadJavadocs>false</downloadJavadocs>
+						<!-- 增加设置项目encoding的文件 -->
+						<additionalConfig>
+							<file>
+								<name>.settings/org.eclipse.core.resources.prefs</name>
+								<content>
+						                <![CDATA[eclipse.preferences.version=1${line.separator}encoding/<project>=${project.build.sourceEncoding}${line.separator}]]>
+								</content>
+							</file>
+						</additionalConfig>	
 					</configuration>
 				</plugin>
 
