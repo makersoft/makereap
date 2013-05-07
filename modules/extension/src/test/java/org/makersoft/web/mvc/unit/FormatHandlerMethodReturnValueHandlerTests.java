@@ -56,7 +56,7 @@ public class FormatHandlerMethodReturnValueHandlerTests {
 	public void testExcludes() throws Exception {
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-		 this.mockMvc.perform(get("/account/user/excludes/1").accept(MediaType.APPLICATION_JSON).headers(httpHeaders))
+		mockMvc.perform(get("/account/user/excludes/1").accept(MediaType.APPLICATION_JSON).headers(httpHeaders))
 		 		.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -72,7 +72,7 @@ public class FormatHandlerMethodReturnValueHandlerTests {
 	public void testExcludeEntityAttributes() throws Exception {
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-		 this.mockMvc.perform(get("/account/user//exclude-entity-attributes/1").accept(MediaType.APPLICATION_JSON).headers(httpHeaders))
+		mockMvc.perform(get("/account/user//exclude-entity-attributes/1").accept(MediaType.APPLICATION_JSON).headers(httpHeaders))
 		 		.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -87,7 +87,7 @@ public class FormatHandlerMethodReturnValueHandlerTests {
 	public void testIncludes() throws Exception {
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-		 this.mockMvc.perform(get("/account/user/includes/1").accept(MediaType.APPLICATION_JSON).headers(httpHeaders))
+		mockMvc.perform(get("/account/user/includes/1").accept(MediaType.APPLICATION_JSON).headers(httpHeaders))
 		 		.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON))

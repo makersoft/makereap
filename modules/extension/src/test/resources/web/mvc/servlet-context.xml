@@ -28,10 +28,7 @@
 	<!-- REST中根据URL后缀自动判定Content-Type及相应的View -->
 	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
 	    <property name="mediaTypes" >
-	        <value>
-	            json=application/json
-	            xml=application/xml
-	        </value>
+	        <value>json=application/json</value>
 	    </property>
 	</bean>
 

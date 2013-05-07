@@ -53,14 +53,13 @@ public class RESTfulMappingHanderMappingTests {
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
 	}
-	
+
 	@Test
 	public void testRoot() throws Exception {
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.TEXT_HTML);
-		this.mockMvc.perform(get("/").accept(MediaType.TEXT_HTML).headers(httpHeaders))
-				.andDo(print()).andExpect(status().isOk())
-				.andExpect(view().name("index"))
+		mockMvc.perform(get("/").accept(MediaType.TEXT_HTML).headers(httpHeaders)).andDo(print())
+				.andExpect(status().isOk()).andExpect(view().name("index"))
 				.andExpect(forwardedUrl("/WEB-INF/views/index.jsp"));
 
 	}
@@ -69,7 +68,7 @@ public class RESTfulMappingHanderMappingTests {
 	public void testIndex() throws Exception {
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setContentType(MediaType.TEXT_HTML);
-		this.mockMvc.perform(get("/account/dept").accept(MediaType.TEXT_HTML).headers(httpHeaders))
+		mockMvc.perform(get("/account/dept").accept(MediaType.TEXT_HTML).headers(httpHeaders))
 				.andDo(print()).andExpect(status().isOk())
 				.andExpect(view().name("account/dept/index"))
 				.andExpect(forwardedUrl("/WEB-INF/views/account/dept/index.jsp"));
