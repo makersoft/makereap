@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Class description goes here.
- * 
- * @version 2013-1-28 下午3:55:02
- * @author Feng Kuok
  */
 public abstract class AbstractMapping implements Mapping {
 	
@@ -23,7 +20,7 @@ public abstract class AbstractMapping implements Mapping {
 	
 	private static final String[] CONSUMES = new String[]{MediaType.ALL_VALUE};
 	
-	private static final String[] PRODUCES = new String[]{MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE,MediaType.TEXT_HTML_VALUE};
+	private static final String[] PRODUCES = new String[]{MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_HTML_VALUE};	// MediaType.APPLICATION_XML_VALUE,
 	
 	public AbstractMapping(final String methodName){
 		this.methodName = methodName;
