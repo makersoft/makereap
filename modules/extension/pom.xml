@@ -17,6 +17,12 @@
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.makersoft.eap</groupId>
+			<artifactId>eap-modules-core</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		
 		<!-- enhancer -->
 		<dependency>
 			<groupId>org.javassist</groupId>
