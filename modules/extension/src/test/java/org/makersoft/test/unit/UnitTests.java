@@ -9,7 +9,6 @@
 package org.makersoft.test.unit;
 
 import org.junit.Test;
-import org.makersoft.test.UnitTest;
 
 /**
  * test

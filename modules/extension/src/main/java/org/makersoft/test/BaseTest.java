@@ -1,5 +1,5 @@
 /*
- * @(#)UnitTest.java 2013-1-22 下午1:56:53
+ * @(#)BaseTest.java 2013-5-9 下午23:33:33
  *
  * Copyright (c) 2011-2013 Makersoft.org all rights reserved.
  *
@@ -11,10 +11,10 @@ package org.makersoft.test;
 import org.junit.Assert;
 
 /**
- * 单元测试基类.
+ * Base test.
  */
-public class UnitTest extends Assert{
-
+public abstract class BaseTest extends Assert{
+	
 	/**
 	 * Pause the current thread
 	 */
@@ -24,6 +24,6 @@ public class UnitTest extends Assert{
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
-
 	}
+
 }

@@ -1,0 +1,17 @@
+- !package org.makersoft.model
+
+- !import /test/users.yaml
+
+- Dept(user):
+    id: 1
+    name: user
+    users:
+      - User(makersoft)
+      - User(fengkuok)
+  
+- Dept(admin):
+    id: 2
+    name: admin
+    users:
+      - User(admin)
+      - User(fengkuok)
