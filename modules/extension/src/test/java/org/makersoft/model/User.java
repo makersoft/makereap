@@ -22,13 +22,13 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = -3139777944766406599L;
 	
-	private Long id;
+	 Long id;
 	
-	private String username;
+	 String username;
 	
-	private String password;
+	 String password;
 	
-	private String email;
+	 String email;
 	
 	private Date createdDate;
 	
@@ -103,5 +103,13 @@ public class User implements Serializable {
 	public void setEnable(Boolean enable) {
 		this.enable = enable;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email="
+				+ email + "]";
+	}
+	
+	
 
 }

@@ -49,4 +49,17 @@ public class Dept implements Serializable {
 		this.users = users;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Dept [id=" + id + ", name=" + name + ", users=[");
+		for(User user : users){
+			sb.append(user);
+			sb.append(",");
+		}
+		sb.append("]]");
+		
+		return sb.toString();
+	}
+
 }

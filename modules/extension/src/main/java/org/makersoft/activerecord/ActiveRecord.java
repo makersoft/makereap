@@ -9,6 +9,10 @@
 package org.makersoft.activerecord;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
+
+import org.makersoft.activerecord.jpa.JPQL;
 
 /**
  * Active record.
@@ -20,48 +24,25 @@ public abstract class ActiveRecord implements Serializable {
 
 	private static final long serialVersionUID = -5798422500008732404L;
 
-	// http://guides.rubyonrails.org/active_record_validations_callbacks.html
-	// create
-	// create!
-	// save
-	// save!
-	// update
-	// update_attributes
-	// update_attributes!
-
-	// decrement!
-	// decrement_counter
-	// increment!
-	// increment_counter
-	// toggle!
-	// touch
-	// update_all
-	// update_attribute
-	// update_column
-	// update_counters
-
 	// --- persist method ---
 	public boolean save() {
-		return true;
-	}
-
-	public boolean update() {
-		return true;
-	}
-
-//	public static <T extends ActiveRecord> boolean updateAttributes(T entity) {
-//		return true;
-//	}
-
-	public static boolean remove(Long id) {
-		return true;
-	}
-
-	public void flush() {
 		throw new UnsupportedOperationException();
 	}
 
+	public boolean update() {
+		throw new UnsupportedOperationException();
+	}
+
+	//和update一个样
 	public void merge() {
+		throw new UnsupportedOperationException();
+	}
+
+	public static boolean delete(Long id) {
+		throw new UnsupportedOperationException();
+	}
+
+	public static void flush() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -70,40 +51,49 @@ public abstract class ActiveRecord implements Serializable {
 //	}
 
 //	// --- query method ---
-//	public static java.lang.Object find(Long id) {
+	public static <T> T findById(Long id) {
+		throw new UnsupportedOperationException();
+	}
+
+//	public static JPQL find(Long... ids) {
 //		throw new UnsupportedOperationException();
 //	}
-//
-//	public static List<? extends ActiveRecord> find(Long... ids) {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	public static long count() {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	public static List<? extends ActiveRecord> findAll() {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	public static List<? extends ActiveRecord> findEntityEntries(int firstResult, int maxResults) {
-//		throw new UnsupportedOperationException();
-//	}
-//
-//	// condition
-//	// -----------
-//	protected static Querying where(String hql) {
-//		return null;
-//	}
-//
-//	protected static Querying where(String hql, Map<String, Object> properties) {
-//		return null;
-//	}
-//
-//	protected static <E> Querying where(String hql, E e) {
-//		return null;
-//	}
-//
+
+	public static long count() {
+		throw new UnsupportedOperationException();
+	}
+
+	public static <T> List<T> findAll() {
+		throw new UnsupportedOperationException();
+	}
+
+	public static Querying all() {
+		throw new UnsupportedOperationException();
+	}
+
+	// condition
+	// -----------
+	public static <E> JPQL select(String select) {
+		throw new UnsupportedOperationException();
+	}
+
+	public static JPQL where(String hql) {
+		throw new UnsupportedOperationException();
+	}
+
+	public static JPQL where(String hql, Map<String, Object> parameters) {
+		throw new UnsupportedOperationException();
+	}
+
+	public static <E> JPQL where(Map<String, Object> parameters) {
+		throw new UnsupportedOperationException();
+	}
+	
+	public static <E> JPQL group(String group) {
+		throw new UnsupportedOperationException();
+	}
+	
+
 //	// Student.joins(:schools).where(:schools => { :category => 'public' })
 //	// Student.joins(:schools).where('schools.category' => 'public' )
 //
@@ -116,4 +106,20 @@ public abstract class ActiveRecord implements Serializable {
 //
 //		return null;
 //	}
+	
+//	where
+//	select
+//	group
+//	order
+	//	reorder
+	//	reverse_order
+//	limit
+//	offset
+//	joins
+//	includes
+	//	lock
+	//	readonly
+//	from
+//	having
+
 }

@@ -32,10 +32,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Class description goes here.
- * 
- * @version 2013-1-19 下午12:44:39
- * @author Feng Kuok
+ * Enhancer support
  */
 public abstract class Enhancer {
 
@@ -48,10 +45,10 @@ public abstract class Enhancer {
 	}
 
 	public static ClassPool newClassPool() {
-		ClassPool classPool = new ClassPool();
-		classPool.appendSystemPath();
+		ClassPool classPool = ClassPool.getDefault();
 		classPool.appendClassPath(new LoaderClassPath(Enhancer.class.getClassLoader()));
-		classPool.appendClassPath(new ApplicationClassesClasspath());
+//		classPool.appendClassPath(new ApplicationClassesClasspath());
+		
 		return classPool;
 	}
 

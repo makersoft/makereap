@@ -1,5 +1,5 @@
 /*
- * @(#)JPA.java 2013-1-19 下午1:31:30
+ * @(#)JPA.java 2013-1-19 下午11:31:30
  *
  * Copyright (c) 2011-2013 Makersoft.org all rights reserved.
  *
@@ -9,18 +9,46 @@
 package org.makersoft.activerecord.jpa;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.makersoft.activerecord.ActiveRecordException;
+import org.springframework.stereotype.Component;
 
 /**
  * JPA Support.
  * 
- * @version 2013-1-19 下午1:31:30
+ * @version 2013-1-19 下午11:31:30
  * @author Feng Kuok
  */
+@Component
 public class JPA {
 
-	public static EntityManager em() {
-        throw new ActiveRecordException();
+	public static ThreadLocal<JPA> local = new ThreadLocal<JPA>();
+
+	private static EntityManager em;
+	
+	@PersistenceContext
+	public void setEntityManager(EntityManager entityManager){
+		em = entityManager;
+	}
+
+	public JPA() {
+		System.out.println("JPA init");
+	}
+	
+    static JPA get() {
+        if (local.get() == null) {
+        	//"The JPA context is not initialized. JPA Entity Manager automatically start when one or more classes annotated with the @javax.persistence.Entity annotation are found in the application."
+            throw new ActiveRecordException();
+        }
+        return local.get();
     }
+
+	public static EntityManager em() {
+		if (em == null) {
+			throw new ActiveRecordException();
+		}
+
+		return em;
+	}
 }

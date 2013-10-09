@@ -10,6 +10,8 @@ package org.makersoft.activerecord;
 
 import java.util.List;
 
+import org.makersoft.activerecord.jpa.JPAQuery;
+
 /**
  * Class description goes here.
  * 
@@ -18,16 +20,31 @@ import java.util.List;
  */
 public interface Querying {
 	
-	List<?> list();
+	<T> T first();
 	
-	<E> E first();
+	Querying bind(String name, Object param);
 	
-	Querying setParameter(String name, Object value);
+	<T> List<T> fetch();
 	
-	Querying setParameter(int index, Object value);
+	<T> List<T> fetch(int max);
 	
-	Querying setMaxResults(int maxResults);
-
-	Querying setFirstResult(int firstResult);
+	<T> JPAQuery from(int position);
+	
+	<T> List<T> fetch(int page, int length);
+	
+//	where
+//	select
+//	group
+//	order
+//	reorder
+//	reverse_order
+//	limit
+//	offset
+//	joins
+//	includes
+//	lock
+//	readonly
+//	from
+//	having
 
 }
