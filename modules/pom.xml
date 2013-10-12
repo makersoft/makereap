@@ -17,6 +17,7 @@
 	<modules>
 		<module>core</module>
 		<module>extension</module>
+		<module>orm</module>
 	</modules>
 
 </project>
