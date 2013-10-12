@@ -180,7 +180,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>eap-modules-extension</finalName>
+		<finalName>eap-modules-orm</finalName>
 
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
