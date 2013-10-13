@@ -1,0 +1,9 @@
+makersoft: !!org.makersoft.model.User
+  id: 1
+  username: makersoft
+  email: admin@makersoft.org
+  
+fengkuok: !!org.makersoft.model.User
+  id: 2
+  username: fengkuok
+  email: fengkuok@makersoft.org

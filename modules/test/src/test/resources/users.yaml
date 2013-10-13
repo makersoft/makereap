@@ -1,0 +1,16 @@
+- !package org.makersoft.model
+
+- User(makersoft):
+    id: 1
+    username: makersoft
+    email: admin@makersoft.org
+  
+- User(fengkuok):
+    id: 2
+    username: fengkuok
+    email: fengkuok@makersoft.org
+  
+- User(admin):
+    id: 3
+    username: admin
+    email: admin@makersoft.org

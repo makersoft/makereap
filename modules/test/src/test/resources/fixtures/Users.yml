@@ -1,0 +1,12 @@
+# you describe your data using the YAML notation here
+# and then load them using Fixtures.load("data.yml")
+
+- !!org.makersoft.model.User
+  id: 1
+  username: makersoft
+  email: admin@makersoft.org
+  
+- !!org.makersoft.model.User
+  id: 2
+  username: fengkuok
+  email: fengkuok@makersoft.org

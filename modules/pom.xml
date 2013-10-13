@@ -20,6 +20,7 @@
 		<module>orm</module>
 		<module>mvc</module>
 		<module>log</module>
+		<module>test</module>
 	</modules>
 
 </project>

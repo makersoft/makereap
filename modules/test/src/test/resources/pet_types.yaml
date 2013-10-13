@@ -1,0 +1,9 @@
+- !package org.makersoft.model
+
+- PetType(dog):
+    id: 1
+    name: Dog
+
+- PetType(cat):
+    id: 2
+    name: Cat
