@@ -18,6 +18,8 @@
 		<module>core</module>
 		<module>extension</module>
 		<module>orm</module>
+		<module>mvc</module>
+		<module>log</module>
 	</modules>
 
 </project>
