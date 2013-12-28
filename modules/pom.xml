@@ -21,6 +21,7 @@
 		<module>mvc</module>
 		<module>log</module>
 		<module>test</module>
+		<module>web</module>
 	</modules>
 
 </project>
